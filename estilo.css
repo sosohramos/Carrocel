@@ -1,0 +1,57 @@
+/* Centraliza a galeria na página. */
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e8e8e8;
+}
+
+
+/* Organiza as imagens em três colunas. */
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+  gap: 20px;
+  padding: 20px;
+}
+
+
+/* Define a aparência das imagens. */
+.galeria img {
+  width: 200px;
+  height: 200px;
+  /* Preenche o espaço sem distorcer a foto. */
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px #0005;
+  /* Faz o efeito mudar suavemente. */
+  transition: filter 0.3s, opacity 0.3s;
+}
+
+
+/* Aplica o efeito em dispositivos com mouse. */
+@media (hover: hover) {
+  /* Desfoca as imagens que não estão sob o mouse. */
+  .galeria:hover img:not(:hover) {
+    filter: blur(5px);
+    opacity: 0.5;
+  }
+}
+
+
+/* Em telas menores, utiliza duas colunas. */
+@media (max-width: 700px) {
+  .galeria {
+    grid-template-columns: repeat(2, 130px);
+    gap: 12px;
+  }
+
+
+  .galeria img {
+    width: 130px;
+    height: 130px;
+  }
+}
+
